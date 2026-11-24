@@ -3,118 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LXR COIN Mining</title>
+<meta name="theme-color" content="#070b18">
+<title>LXR COIN — Mine • Earn • Grow</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#080d18;color:#f4f7ff;font-family:Arial,sans-serif}
-header{background:#111d35;padding:18px;text-align:center;border-bottom:2px solid #1677ff}
-header h2{margin:0;color:#55aaff}
-nav{display:flex;overflow-x:auto;gap:7px;padding:10px;background:#101a2d}
-nav button{background:#202e49;color:white;border:0;padding:10px 13px;border-radius:8px;white-space:nowrap;cursor:pointer}
-main{max-width:520px;margin:auto;padding:15px}
-.card{background:#14213a;padding:18px;border-radius:14px;margin:13px 0;border:1px solid #263c60}
-h3{color:#55aaff;margin-top:0}
-.balance{font-size:32px;color:#ffd45c;font-weight:bold;overflow-wrap:anywhere}
-button.primary{background:#0878ff;color:white;border:0;padding:12px 17px;border-radius:9px;font-weight:bold;cursor:pointer}
-button.red{background:#d93648;color:white;border:0;padding:12px;border-radius:9px;cursor:pointer}
-input{width:100%;padding:12px;margin:8px 0;background:#0b1425;border:1px solid #355078;border-radius:8px;color:white}
-.page{display:none}.page.active{display:block}
-.small{color:#aabbd4;font-size:13px;line-height:1.5}
-.stat{display:flex;justify-content:space-between;gap:12px;margin:10px 0}
-a{color:#55aaff;word-break:break-all}
-hr{border:0;border-top:1px solid #355078;margin:16px 0}
+:root{--bg:#070b18;--panel:#101a31;--panel2:#0b1328;--gold:#ffd34d;--blue:#16bfff;--red:#ff386b;--muted:#a9b6d4;--green:#35f59a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#152b59 0,#080d1d 42%,#050813 100%);color:#f7f9ff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+.app{max-width:470px;margin:auto;min-height:100vh;padding:12px 13px 105px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:9px 5px 16px}.brand{font-weight:900;font-size:27px;letter-spacing:.5px;color:var(--gold);text-shadow:0 0 15px #ffb52d}.tag{font-size:11px;color:#dce8ff;letter-spacing:2px}.circle{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#101d38;border:1px solid #397aff;color:white;font-size:20px}
+.page{display:none;animation:fade .25s ease}.page.active{display:block}@keyframes fade{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{border:1px solid #347dff;border-radius:22px;padding:22px 16px;background:linear-gradient(145deg,#111c39,#080d1d 60%,#26122c);box-shadow:0 0 18px #126bff55,inset 0 0 20px #ed2d4b22;text-align:center;position:relative;overflow:hidden}
+.coin{width:172px;height:172px;margin:7px auto 17px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#ffe98b 0,#d99318 45%,#4c2500 66%,#ffcf46 72%,#713a05 80%,#f7bd35 86%,#281508 92%);box-shadow:0 0 22px #ffbd35,0 0 55px #ff9b174d,inset 0 0 15px #fff3a5}
+.coin span{width:137px;height:137px;border-radius:50%;border:3px solid #fff0a0;display:grid;place-items:center;background:radial-gradient(circle,#9b5a0a,#21120a);font-size:42px;font-weight:1000;color:#ffdf65;text-shadow:2px 3px 2px #321500}
+.balance{background:linear-gradient(110deg,#101b34,#070d1c);border:1px solid #ffcc4c;border-radius:17px;padding:13px;margin-top:13px;text-align:left;display:flex;justify-content:space-between;align-items:center}.balance small,.muted{color:var(--muted)}.amount{font-size:27px;color:#ffe34d;font-weight:900}.usd{font-size:13px;color:#dce7ff}
+.btn{border:0;border-radius:15px;padding:15px 16px;font-size:16px;font-weight:900;color:#171006;background:linear-gradient(100deg,#ffdf62,#ff9d1b);box-shadow:0 0 18px #ffb52d66;cursor:pointer;width:100%;margin-top:13px}.btn.blue{background:linear-gradient(100deg,#21d8ff,#2874ff);color:white;box-shadow:0 0 17px #168cff66}.btn.red{background:linear-gradient(100deg,#ff456f,#bd174a);color:white}.btn:disabled{opacity:.55;cursor:not-allowed}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.mini{padding:13px 10px;border:1px solid #4775b8;border-radius:15px;background:linear-gradient(140deg,#142444,#0b1020);text-align:center;font-weight:800}.mini b{display:block;color:var(--gold);font-size:19px;margin-top:4px}
+.section-title{font-size:22px;font-weight:900;margin:8px 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 15px}.card{background:linear-gradient(145deg,#14213e,#0a1020);border:1px solid #245a9f;border-radius:17px;padding:14px;margin:11px 0;box-shadow:0 0 13px #0d65cc22}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.big{font-size:26px;font-weight:900;color:#ffe14d}.green{color:var(--green)}.blueText{color:#4ccfff}.timer{font-size:31px;font-weight:900;color:#ffe34d;text-align:center}.bar{height:13px;background:#050a16;border:1px solid #45618b;border-radius:20px;overflow:hidden;margin:10px 0}.fill{height:100%;width:0;background:linear-gradient(90deg,#ffb52e,#ffe65c);transition:width .3s}
+.item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #263e6c;border-radius:15px;background:#0d1730;margin:9px 0}.ico{width:43px;height:43px;border-radius:12px;display:grid;place-items:center;background:#162b52;font-size:23px;flex:none}.item .info{flex:1}.item strong{display:block}.item small{color:var(--muted)}.pill{font-size:12px;color:#ffdf61;border:1px solid #8a6a26;border-radius:30px;padding:5px 9px}
+input,select{width:100%;background:#080f20;border:1px solid #3c5f91;border-radius:12px;padding:13px;color:white;font-size:15px;margin:7px 0;outline:none}label{font-size:13px;color:#c5d4f1}.nav{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(450px,calc(100% - 24px));display:grid;grid-template-columns:repeat(6,1fr);gap:3px;padding:8px 5px;border:1px solid #3c5b8e;border-radius:20px;background:#080d1df2;backdrop-filter:blur(12px);box-shadow:0 0 20px #000b;z-index:5}.nav button{background:transparent;border:0;color:#aebbd8;font-size:10px;font-weight:700;padding:7px 1px;cursor:pointer;border-radius:12px}.nav button span{display:block;font-size:20px;margin-bottom:3px}.nav button.active{color:#ffdc54;background:#182744;box-shadow:inset 0 0 12px #ffbf2633}
+.notice{font-size:12px;line-height:1.5;color:#aebbd8;text-align:center;margin:16px 5px}.status{color:var(--green);font-weight:800}.package{border:1px solid #d99b34}.package b{color:#ffe15a;font-size:21px}
+@media(min-width:600px){body{padding:20px 0}.app{border:1px solid #1b3158;border-radius:25px;min-height:calc(100vh - 40px);background:#080d1dcc}}
 </style>
 </head>
 <body>
-<header><h2>🪙 LXR COIN</h2><p>Mining &amp; Rewards Platform</p></header>
-<nav>
-<button onclick="showPage('home')">Home</button><button onclick="showPage('mining')">Mining</button>
-<button onclick="showPage('tasks')">Tasks</button><button onclick="showPage('referral')">Referral</button>
-<button onclick="showPage('promote')">Promote</button><button onclick="showPage('withdraw')">Withdraw</button>
-<button onclick="showPage('settings')">Settings</button>
-</nav>
-<main>
+<div class="app">
+<header class="top"><div><div class="brand">👑 LXR COIN</div><div class="tag">MINE • EARN • GROW</div></div><div class="circle" title="Notifications">♟</div></header>
+
 <section id="home" class="page active">
-<div class="card"><h3>My LXR Balance</h3><div class="balance"><span id="balance">0</span> LXR</div><p class="small">Demo balance on this device only</p></div>
-<div class="card"><h3>Account Information</h3>
-<div class="stat"><span>Demo User ID</span><b id="uid"></b></div>
-<div class="stat"><span>Mining Rate</span><b>10 LXR / Hour</b></div>
-<div class="stat"><span>Referral Reward</span><b>50 LXR</b></div></div>
+ <div class="hero"><div class="muted">WELCOME TO LXR COIN</div><div class="coin"><span>LXR</span></div><div style="font-size:18px;font-weight:800">Mine • Earn • Grow</div></div>
+ <div class="balance"><div><small>Your Balance</small><div class="amount"><span class="bal">0</span> LXR</div><div class="usd">≈ demo balance</div></div><div style="font-size:37px">💰</div></div>
+ <button class="btn" onclick="show('mining')">⛏️ &nbsp; Start Mining &nbsp; ❯</button>
+ <div class="grid2"><div class="mini">🎁 Daily Bonus<b>+500 LXR</b></div><div class="mini">👥 Referral<b>50 LXR</b></div></div>
+ <div class="card"><div class="row"><strong>Mining status</strong><span class="pill" id="homeStatus">Not mining</span></div><p class="sub">Start a 12-hour demo mining session from the Mining page.</p></div>
 </section>
-<section id="mining" class="page"><div class="card"><h3>⛏️ LXR Mining</h3>
-<p>Mining Duration: 12 Hours</p><p>Mining Rate: <b>10 LXR / Hour</b></p>
-<h2 id="timer">12:00:00</h2><button class="primary" onclick="startMining()">Start Mining</button>
-<p class="small" id="mineStatus">Mining is not started.</p></div></section>
-<section id="tasks" class="page"><div class="card"><h3>🎯 Demo Tasks</h3>
-<p>Sample task reward: 20 LXR</p><button class="primary" onclick="demoTask()">Claim Demo Task</button>
-<p class="small">এটি শুধু পরীক্ষার বাটন। কোনো Telegram বা social account যাচাই হচ্ছে না।</p></div></section>
-<section id="referral" class="page"><div class="card"><h3>👥 Invite Friends</h3>
-<p>বন্ধুকে তোমার Referral Link পাঠাও।</p><h2 style="color:#ffd45c">50 LXR</h2><p>প্রতি সফল রেফারেলে বোনাস (পরিকল্পিত)</p>
-<label>Your Demo Referral Link</label><input id="refLink" readonly>
-<button class="primary" onclick="copyReferral()">Copy Referral Link</button><p id="copyStatus" class="small"></p>
-<hr><div class="stat"><span>Referral Count</span><b id="refCount">0</b></div>
-<div class="stat"><span>Referral Earnings</span><b><span id="refEarn">0</span> LXR</b></div>
-<p class="small">গুরুত্বপূর্ণ: এই ফাইলে বাস্তব রেফারেল ট্র্যাকিং বা বোনাস বিতরণ নেই। শুধু লিংকের নমুনা দেখানো হয়। প্রকৃত রেফারেল যাচাই ও ৫০ LXR দেওয়ার জন্য নিরাপদ Backend এবং Database লাগবে।</p></div></section>
-<section id="promote" class="page"><div class="card"><h3>📢 Promote</h3><p>Demo Campaign</p>
-<input id="promoLink" placeholder="Your promotion link"><button class="primary" onclick="submitCampaign()">Submit Demo Campaign</button>
-<p class="small">কোনো পেমেন্ট বা বাস্তব প্রচার চালু হচ্ছে না।</p></div></section>
-<section id="withdraw" class="page"><div class="card"><h3>💰 Withdraw</h3>
-<p>Demo Conversion Rate: 10,000 LXR = 1 USDT</p><p>Available Balance: <b id="withdrawBalance">0</b> LXR</p>
-<input id="withdrawAmount" type="number" min="1" placeholder="Enter LXR amount">
-<input id="wallet" placeholder="USDT TRC20 Wallet Address">
-<button class="primary" onclick="withdrawDemo()">Submit Demo Request</button>
-<p class="small" id="withdrawStatus">Real USDT withdrawal is not connected.</p></div></section>
-<section id="settings" class="page"><div class="card"><h3>⚙️ Settings</h3>
-<p class="small">এটি লোকাল ডেমো। এখানে নিরাপদ Admin Panel নেই।</p>
-<button class="red" onclick="resetDemo()">Reset Demo Data</button>
-<p class="small">Admin control, user database, server-side balance এবং payout integration পরে Backend-এ তৈরি করতে হবে।</p></div></section>
-</main>
+
+<section id="mining" class="page">
+ <div class="section-title">⛏️ Mining</div><p class="sub">Start your miner and earn demo LXR coins.</p>
+ <div class="hero"><div style="font-size:62px">⚙️</div><div class="big">+1,000 LXR</div><div class="muted">per 12-hour session</div><div class="timer" id="timer">12:00:00</div><div class="bar"><div class="fill" id="progress"></div></div><div id="mineStatus" class="muted">Not mining</div></div>
+ <button class="btn" id="mineBtn" onclick="toggleMining()">⚡ Start Mining</button>
+ <div class="card"><div class="row"><strong>Mining Speed</strong><span class="pill">Demo rate</span></div><div class="big">1,000 LXR / 12h</div><p class="sub">Boost packages are visual demo options only.</p></div>
+ <div class="grid2"><div class="mini">2x Boost<b>$1.99</b></div><div class="mini">5x Boost<b>$3.99</b></div></div>
+</section>
+
+<section id="tasks" class="page">
+ <div class="section-title">📋 Tasks</div><p class="sub">Complete a task to test the demo reward button.</p>
+ <div class="card"><strong>Complete Tasks — Earn LXR Coins</strong><p class="sub">বাস্তবে কাজ যাচাই না হওয়া পর্যন্ত কোনো রিওয়ার্ড দেওয়া হবে না।</p></div>
+ <div id="taskList"></div>
+</section>
+
+<section id="promote" class="page">
+ <div class="section-title">📣 Promote</div><p class="sub">Promote your channel or campaign.</p>
+ <div class="card"><strong>Promote Your Channel</strong><p class="sub">Choose a sample package and submit your campaign details.</p></div>
+ <div class="grid2"><div class="mini package">Starter<b>$5</b><small>+1,000 demo reach</small></div><div class="mini package">Standard<b>$10</b><small>+2,500 demo reach</small></div><div class="mini package">Premium<b>$20</b><small>+5,000 demo reach</small></div><div class="mini package">Business<b>$50</b><small>+12,000 demo reach</small></div></div>
+ <div class="card"><label>Your channel or campaign link</label><input id="campaign" placeholder="https://t.me/your_channel"><button class="btn red" onclick="submitCampaign()">➤ Submit Campaign</button></div>
+</section>
+
+<section id="withdraw" class="page">
+ <div class="section-title">💳 Withdraw</div><p class="sub">Demo withdrawal screen — no cryptocurrency is sent.</p>
+ <div class="card"><div class="row"><strong>Withdrawal status</strong><span class="pill">Not connected</span></div><div class="big"><span class="bal">0</span> LXR</div><p class="sub">Demo exchange rate: 1,000 LXR = 1 USDT (not a real market price)</p></div>
+ <div class="card"><label>TRC20 wallet address</label><input id="wallet" placeholder="Enter your TRC20 address"><label>Amount (LXR)</label><input id="withdrawAmount" type="number" min="5000" placeholder="Minimum 5,000 LXR"><button class="btn blue" onclick="requestWithdraw()">Request Withdrawal</button></div>
+ <p class="notice">এই ডেমোতে কোনো আসল USDT পাঠানো, ওয়ালেট সংযোগ বা পেমেন্ট প্রসেসিং নেই। নিরাপদ backend ও payout ব্যবস্থা তৈরি না হওয়া পর্যন্ত টাকা তোলার প্রতিশ্রুতি দেওয়া যাবে না।</p>
+</section>
+
+<section id="settings" class="page">
+ <div class="section-title">⚙️ Settings</div><p class="sub">Your LXR COIN demo profile and preferences.</p>
+ <div class="item"><div class="ico">👤</div><div class="info"><strong>User Profile</strong><small>Telegram account connection not configured</small></div></div>
+ <div class="item"><div class="ico">🌐</div><div class="info"><strong>Language</strong><small>বাংলা / English</small></div></div>
+ <div class="item"><div class="ico">🛡️</div><div class="info"><strong>Security</strong><small>Backend authentication required</small></div></div>
+ <div class="item"><div class="ico">ℹ️</div><div class="info"><strong>About LXR COIN</strong><small>Mine • Earn • Grow</small></div></div>
+ <div class="item"><div class="ico">🎧</div><div class="info"><strong>Help & Support</strong><small>Support link not configured</small></div></div>
+</section>
+<p class="notice">LXR COIN UI DEMO • Balances and rewards are stored only in this browser. This is not real mining or a real token wallet.</p>
+</div>
+<nav class="nav">
+ <button class="active" data-page="home" onclick="show('home')"><span>⌂</span>Home</button>
+ <button data-page="mining" onclick="show('mining')"><span>⛏</span>Mining</button>
+ <button data-page="tasks" onclick="show('tasks')"><span>☑</span>Tasks</button>
+ <button data-page="promote" onclick="show('promote')"><span>📣</span>Promote</button>
+ <button data-page="withdraw" onclick="show('withdraw')"><span>▣</span>Withdraw</button>
+ <button data-page="settings" onclick="show('settings')"><span>⚙</span>Settings</button>
+</nav>
 <script>
-const KEY="lxr_demo_account_v1";
-let data;
-try{data=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){data=null}
-if(!data){data={id:"LXR"+Math.floor(100000+Math.random()*900000),balance:0,referrals:0,referralEarnings:0,miningEnd:0,lastUpdate:Date.now()};save()}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));updateUI()}
-function updateUI(){
- document.getElementById("balance").textContent=Number(data.balance).toFixed(4);
- document.getElementById("uid").textContent=data.id;
- document.getElementById("refCount").textContent=data.referrals;
- document.getElementById("refEarn").textContent=Number(data.referralEarnings).toFixed(2);
- document.getElementById("withdrawBalance").textContent=Number(data.balance).toFixed(4);
- document.getElementById("refLink").value=location.href.split("?")[0]+"?ref="+encodeURIComponent(data.id);
-}
-function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(id).classList.add("active")}
-function startMining(){
- if(data.miningEnd>Date.now()){alert("Mining is already running!");return}
- data.miningEnd=Date.now()+12*60*60*1000;data.lastUpdate=Date.now();save();
- document.getElementById("mineStatus").textContent="Demo mining started on this device.";
-}
-function miningTick(){
- if(data.miningEnd>Date.now()){
-  const now=Date.now(),elapsed=Math.max(0,(now-data.lastUpdate)/1000);
-  data.balance+=elapsed*10/3600;data.lastUpdate=now;save();
-  const left=data.miningEnd-now,h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);
-  document.getElementById("timer").textContent=[h,m,s].map(x=>String(x).padStart(2,"0")).join(":");
- }else{
-  if(data.miningEnd){data.miningEnd=0;data.lastUpdate=Date.now();save();document.getElementById("mineStatus").textContent="Demo mining session ended."}
-  document.getElementById("timer").textContent="12:00:00";
- }
-}
-function demoTask(){data.balance+=20;save();alert("Demo task reward: 20 LXR added.")}
-async function copyReferral(){
- const input=document.getElementById("refLink");
- try{await navigator.clipboard.writeText(input.value);document.getElementById("copyStatus").textContent="Referral link copied!"}
- catch(e){input.select();document.execCommand("copy");document.getElementById("copyStatus").textContent="Copy চেষ্টা করা হয়েছে; প্রয়োজনে লিংকটি হাতে কপি করো।"}
-}
-function submitCampaign(){const v=document.getElementById("promoLink").value.trim();if(!v){alert("আগে promotion link লিখো।");return}alert("Demo only: campaign request দেখা হয়েছে; কোনো campaign বা payment চালু হয়নি।")}
-function withdrawDemo(){
- const amount=Number(document.getElementById("withdrawAmount").value),wallet=document.getElementById("wallet").value.trim();
- if(!Number.isFinite(amount)||amount<=0||amount>data.balance){alert("তোমার ব্যালেন্সের মধ্যে সঠিক পরিমাণ লিখো।");return}
- if(!/^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(wallet)){alert("একটি সঠিক TRC20 wallet address লিখো।");return}
- document.getElementById("withdrawStatus").textContent="Demo request validated. কোনো USDT পাঠানো হয়নি এবং ব্যালেন্স কাটা হয়নি।";
-}
-function resetDemo(){if(confirm("সব demo data মুছে ফেলবে?")){localStorage.removeItem(KEY);location.reload()}}
-updateUI();miningTick();setInterval(miningTick,1000);
+const $=id=>document.getElementById(id);
+let balance=Number(localStorage.getItem('lxr_demo_balance')||0);
+let miningEnd=Number(localStorage.getItem('lxr_demo_end')||0);
+const tasks=[['▶️','YouTube Tasks','+500 LXR'],['✈️','Telegram Tasks','+500 LXR'],['🎵','TikTok Tasks','+500 LXR'],['𝕏','X.com Tasks','+500 LXR'],['📸','Instagram Tasks','+500 LXR'],['📺','Watch Ads','+100 LXR']];
+function save(){localStorage.setItem('lxr_demo_balance',balance);localStorage.setItem('lxr_demo_end',miningEnd);document.querySelectorAll('.bal').forEach(e=>e.textContent=balance.toLocaleString('en-US'))}
+function show(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===page));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));window.scrollTo({top:0,behavior:'smooth'})}
+function renderTasks(){$('taskList').innerHTML=tasks.map((t,i)=>`<div class="item"><div class="ico">${t[0]}</div><div class="info"><strong>${t[1]}</strong><small>${t[2]}</small></div><button class="pill" onclick="claimTask(${i})">Demo claim</button></div>`).join('')}
+function claimTask(i){const key='lxr_demo_task_'+i;if(localStorage.getItem(key)){alert('এই demo task reward আগে নেওয়া হয়েছে।');return}localStorage.setItem(key,'1');balance+=i===5?100:500;save();alert('Demo reward যোগ হয়েছে। এটি কোনো বাস্তব task verification নয়।')}
+function toggleMining(){if(miningEnd>Date.now()){alert('Mining session already running.');return}miningEnd=Date.now()+12*60*60*1000;save();tick()}
+function tick(){let left=miningEnd-Date.now();if(left<=0&&miningEnd){balance+=1000;miningEnd=0;save();alert('12-hour demo session complete: +1,000 LXR');left=0}let h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);$('timer').textContent=[h,m,s].map(n=>String(n).padStart(2,'0')).join(':');let active=left>0;$('mineStatus').textContent=active?'Mining in Progress…':'Not mining';$('homeStatus').textContent=active?'Mining active':'Not mining';$('mineBtn').textContent=active?'Mining in Progress…':'⚡ Start Mining';$('mineBtn').disabled=active;$('progress').style.width=active?((1-left/(12*3600000))*100)+'%':'0%'}
+function submitCampaign(){let v=$('campaign').value.trim();if(!/^https?:\/\//i.test(v)){alert('একটি সঠিক https:// অথবা http:// লিংক দিন।');return}alert('Demo campaign জমা হয়েছে। বাস্তবে প্রকাশ বা পেমেন্ট হয়নি।')}
+function requestWithdraw(){let a=Number($('withdrawAmount').value),w=$('wallet').value.trim();if(!w||a<5000){alert('ওয়ালেট ঠিকানা দিন এবং কমপক্ষে 5,000 LXR লিখুন।');return}alert('এটি শুধু demo request। কোনো USDT পাঠানো হবে না।')}
+renderTasks();save();tick();setInterval(tick,1000);
 </script>
 </body>
 </html>
